@@ -24,16 +24,16 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
 
-    \`\`\`sh
+    ```sh
     git clone https://github.com/arjun-mavonic/nodejs-grpc-demo.git
     cd nodejs-grpc-demo
-    \`\`\`
+    ```
 
 2. Install the dependencies:
 
-    \`\`\`sh
+    ```sh
     npm install
-    \`\`\`
+    ```
 
 ## Usage
 
@@ -41,35 +41,35 @@ Before you begin, ensure you have met the following requirements:
 
 To start the gRPC server, run the following command:
 
-\`\`\`sh
+```sh
 node server.js
-\`\`\`
+```
 
 You should see the following output indicating that the server is running:
 
-\`\`\`
+```
 Server running at 0.0.0.0:50051
-\`\`\`
+```
 
 ### Running the Client
 
 To test the server, you can use the provided client implementation. In a new terminal, run:
 
-\`\`\`sh
+```sh
 node client.js
-\`\`\`
+```
 
 You should see the following output:
 
-\`\`\`
+```
 Greeting: Hello World
-\`\`\`
+```
 
 ## Project Structure
 
 The project structure is as follows:
 
-\`\`\`
+```
 grpc-hello-world/
 ├── node_modules/
 ├── protos/
@@ -78,7 +78,7 @@ grpc-hello-world/
 ├── server.js
 ├── package.json
 └── README.md
-\`\`\`
+```
 
 - `protos/hello.proto`: The Protocol Buffers definition file for the gRPC service.
 - `server.js`: The implementation of the gRPC server.
@@ -90,7 +90,7 @@ grpc-hello-world/
 
 The `hello.proto` file defines the gRPC service and messages:
 
-\`\`\`proto
+```proto
 syntax = "proto3";
 
 package hello;
@@ -106,7 +106,7 @@ message HelloRequest {
 message HelloReply {
   string message = 1;
 }
-\`\`\`
+```
 
 ## License
 
