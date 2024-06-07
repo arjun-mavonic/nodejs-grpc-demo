@@ -23,10 +23,27 @@ function sayHello(call, callback) {
   callback(null, reply);
 }
 
+// Implement the SayHelloStreaming function
+function sayHelloStreaming(call) {
+  console.log("received request for sayHello method");
+  const name = call.request.name;
+  let count = 0;
+  const interval = setInterval(() => {
+    if (count < 10) {
+      const reply = { message: `Hello ${name} - Message ${count + 1}` };
+      call.write(reply);
+      count++;
+    } else {
+      clearInterval(interval);
+      call.end();
+    }
+  }, 1000);
+}
+
 // Start the gRPC server
 function main() {
   const server = new grpc.Server();
-  server.addService(helloProto.Greeter.service, { SayHello: sayHello });
+  server.addService(helloProto.Greeter.service, { SayHello: sayHello, SayHelloStreaming: sayHelloStreaming});
   const bindAddress = '0.0.0.0:50051';
   server.bindAsync(bindAddress, grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err) {
